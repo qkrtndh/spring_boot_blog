@@ -16,13 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HttpControllerTest {
 	
+	private static final String TAG = "HttpControllerTest: ";
+	
+	@GetMapping("/http/lombok")
+	public String lombokTest() {
+		Member m = new Member(1, "ssar", "123", "email");
+		System.out.println(TAG+"getter :" + m.getId());
+		m.setId(5000);
+		System.out.println(TAG+"setter :" + m.getId());
+		return "lombok test 완료";
+	}
 	//http://localhost:8080/http/get(select)
 	//http://localhost:8080/http/get?id=1&username=ssar
 	@GetMapping("/http/get")
 	//public String getTest(@RequestParam int id, @RequestParam String username) {
 	//동일하게 동작한다.
 	public String getTest(Member m) {
-		return "get 요청"+m.getId()+", "+m.getName();
+		return "get 요청"+m.getId()+", "+m.getUsername();
 	}
 	
 	//http://localhost:8080/http/post(insert)
@@ -40,13 +50,13 @@ public class HttpControllerTest {
 	//위의 두가지 는 스프링 부트의 messageconverter 가 자동으로 파싱하여 데이터를 넣어준다.
 	
 	public String postTest(Member m) {
-		return "post 요청"+m.getId()+", "+m.getName();
+		return "post 요청"+m.getId()+", "+m.getUsername();
 	}
 	
 	//http://localhost:8080/http/put(update)
 	@PutMapping("/http/put")
 	public String putTest(@RequestBody Member m) {
-		return "put  요청"+m.getId()+", "+m.getName();
+		return "put  요청"+m.getId()+", "+m.getUsername();
 	}
 	
 	//http://localhost:8080/http/delete(delete)
