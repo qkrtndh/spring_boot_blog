@@ -22,6 +22,6 @@ public class UserApiController {
 		System.out.println("무야호");
 		user.setRole(RoleType.USER);
 		int result = userService.회원가입(user);
-		return new ResponseDto<Integer>(HttpStatus.OK,result);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),result);
 	}
 }
