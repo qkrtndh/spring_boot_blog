@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form>
   
   <div class="form-group">
     <label for="username">Username</label>
@@ -20,9 +20,11 @@
     <input type="password" class="form-control" placeholder="Enter password" id="password">
   </div>
   
-  <button type="submit" class="btn btn-primary">회원가입</button>
+  
 </form>
+<button id="btn-save" class="btn btn-primary">회원가입</button>
 </div>
+<script src="/blog/js/user.js"></script>
 
 <br/>
 <%@ include file="../layout/footer.jsp" %>
