@@ -19,13 +19,17 @@ public class UserApiController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/api/user")
+	@PostMapping("/auth/joinProc")
 	public  ResponseDto<Integer> save(@RequestBody User user) {
-		System.out.println("무야호");
+		System.out.println("회원가입");
 		user.setRole(RoleType.USER);
 		int result = userService.회원가입(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),result);
 	}
+	//스프링 시큐리티가 화면을 가로채서 로그인을 유도한다. 이때 비밀번호는 콘솔에 뜨며 아이디는 user.
+	//세션은 자동으로 생성된다.
+	
+	/*
 	@PostMapping("/api/user/login")
 	public ResponseDto<Integer> login(@RequestBody User user,HttpSession session){
 		System.out.println("login 호출");
@@ -34,5 +38,5 @@ public class UserApiController {
 			session.setAttribute("principal", principal);
 		}
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
-	}
+	}*/
 }
