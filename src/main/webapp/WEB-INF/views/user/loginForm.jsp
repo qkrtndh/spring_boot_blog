@@ -22,6 +22,6 @@
 </form>
 <button id="btn-login" class="btn btn-primary">로그인</button>
 </div>
-<script src="/blog/js/user.js"></script>
+<script src="/js/user.js"></script>
 <br/>
 <%@ include file="../layout/footer.jsp" %>

@@ -18,14 +18,14 @@ let index = {
 		$.ajax({
 			//회원가입 수행 요청
 			type:"POST",
-			url:"/blog/api/user",
+			url:"/api/user",
 			data:JSON.stringify(data),//http body 데이터
 			contentType:"application/json; charset=utf-8"//body데이터 타입 명시
 			//dataType:"json"//응답이 왔을 때 json 형식으로 온다면 javascript로 변환//자동 변환 되는듯
 		}).done(function(response){
 			//성공시
 			alert("회원가입 완료");
-			location.href="/blog";
+			location.href="/";
 			
 		}).fail(function(error){
 			//실패시
@@ -42,14 +42,14 @@ let index = {
 		$.ajax({
 			//로그인 요청
 			type:"POST",
-			url:"/blog/api/user/login",
+			url:"/api/user/login",
 			data:JSON.stringify(data),//http body 데이터
 			contentType:"application/json; charset=utf-8"//body데이터 타입 명시
 			//dataType:"json"//응답이 왔을 때 json 형식으로 온다면 javascript로 변환//자동 변환 되는듯
 		}).done(function(response){
 			//성공시
 			alert("로그인 완료");
-			location.href="/blog";
+			location.href="/";
 			
 		}).fail(function(error){
 			//실패시
