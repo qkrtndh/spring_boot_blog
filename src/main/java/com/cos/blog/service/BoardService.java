@@ -30,18 +30,26 @@ public class BoardService {
 		
 	}
 	
+	@Transactional(readOnly = true)
 	public Page<Board> 글목록(Pageable pageable){
 		return boardRepository.findAll(pageable);
 	}
 	
+	@Transactional(readOnly = true)
 	public Board 글상세보기(int id) {
 		return boardRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("상세보기 실패: 아이디를 찾을 수 없음");
 		});
 	}
 	
+	@Transactional
+	public void 삭제하기(int id)
+	{
+		System.out.println("삭제하기:" + id);
+		boardRepository.deleteById(id);
+	}
+}
 	/*@Transactional(readOnly = true) //select 시 트랜젝션 시작, 서비스 종료시 트랜잭션 종료(정합성 유지)
 	public User 로그인(User user) {
 		return userRepository.findByUsernameAndPassword(user.getUsername(),user.getPassword());
 	}*/
-}
