@@ -41,7 +41,6 @@ public class Board {
 	private String content;//섬머노트 라이브러리 사용할것
 	//일반적 글은 HTML태그가 섞여 용량이 커짐
 	
-	@ColumnDefault("0")
 	private int count;//조회수
 	
 	
