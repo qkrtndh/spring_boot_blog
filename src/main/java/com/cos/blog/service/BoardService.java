@@ -48,6 +48,18 @@ public class BoardService {
 		System.out.println("삭제하기:" + id);
 		boardRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public void 수정하기(int id,Board requestBoard)
+	{
+		System.out.println("수정하기:" + id);
+		Board board = boardRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("상세보기 실패: 아이디를 찾을 수 없음");
+		});//영속화
+		board.setTitle(requestBoard.getTitle());
+		board.setContent(requestBoard.getContent());
+		//해당 함수로 종료시 service가 종료될때 트랜잭션이 종료됨, 이때 더티체킹-자동 업데이트가됨(db flush)
+	}
 }
 	/*@Transactional(readOnly = true) //select 시 트랜젝션 시작, 서비스 종료시 트랜잭션 종료(정합성 유지)
 	public User 로그인(User user) {
