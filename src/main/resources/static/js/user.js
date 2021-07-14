@@ -3,7 +3,9 @@ let index = {
 		$("#btn-save").on("click",()=>{
 			this.save();
 		});
-		
+		$("#btn-update").on("click",()=>{
+			this.update();
+		});
 	},
 	
 	save:function(){
@@ -29,6 +31,28 @@ let index = {
 			//실패시
 			alert(JSON.stringify(error));
 		});//ajax통신을 이용하여 3개의 데이터를 json으로 변경하여 insert 요청
+	},
+	
+	update:function(){
+		let data={
+			id :$("#id").val(),
+			password:$("#password").val(),
+			email:$("#email").val()
+		};
+		$.ajax({
+			type:"PUT",
+			url:"/user",
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8"
+			
+		}).done(function(response){
+			//성공시
+			alert("수정 완료");
+			location.href="/";
+			
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
 	}
 }
 
