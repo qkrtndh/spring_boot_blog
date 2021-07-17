@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -57,6 +58,7 @@ public class Board {
 	//이렇게 함으로서 board 테이블을 불러올 때 reply를 join만 하게 할 수 있다.
 	@JsonIgnoreProperties({"board"})
 	//내부의 board의 getter를 하지 않는다.(무한참조방지)
+	@OrderBy("id desc")
 	private List<Reply> replys;
 	
 	@CreationTimestamp
