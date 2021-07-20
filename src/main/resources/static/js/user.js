@@ -24,8 +24,14 @@ let index = {
 			//dataType:"json"//응답이 왔을 때 json 형식으로 온다면 javascript로 변환//자동 변환 되는듯
 		}).done(function(response){
 			//성공시
-			alert("회원가입 완료");
-			location.href="/";
+			if(response.status === 500){
+				alert("회원가입 실패");
+			}
+			else{
+					alert("회원가입 완료");
+					location.href="/";
+				}
+			
 			
 		}).fail(function(error){
 			//실패시
