@@ -11,28 +11,34 @@
 			</div>
 		</div>
 	</c:forEach>
-
+	<div class="text-center m-2">
+		<a class="btn btn-info" role="button" href="/board/saveForm">글쓰기</a>
+		</button>
+	</div>
 	<ul class="pagination justify-content-center">
 		<c:choose>
 			<c:when test="${boards.first }">
 				<li class="page-item disabled"><a class="page-link"
 					href="?page=${boards.number-1}">Previous</a></li>
 			</c:when>
-			<c:otherwise><li class="page-item"><a class="page-link"
-			href="?page=${boards.number-1}">Previous</a></li></c:otherwise>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link"
+					href="?page=${boards.number-1}">Previous</a></li>
+			</c:otherwise>
 		</c:choose>
 		<c:choose>
 			<c:when test="${boards.last }">
 				<li class="page-item disabled"><a class="page-link"
-			href="?page=${boards.number+1}">Next</a></li>
+					href="?page=${boards.number+1}">Next</a></li>
 			</c:when>
-			<c:otherwise><li class="page-item"><a class="page-link"
-			href="?page=${boards.number+1}">Next</a></li>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link"
+					href="?page=${boards.number+1}">Next</a></li>
 			</c:otherwise>
 		</c:choose>
-		
 
-		
+
+
 	</ul>
 
 </div>
