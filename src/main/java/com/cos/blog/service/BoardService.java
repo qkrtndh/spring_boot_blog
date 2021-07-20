@@ -76,6 +76,11 @@ public class BoardService {
 		replyRepository.mSave(replySaveRequestDto.getUserId(),replySaveRequestDto.getBoardId(),replySaveRequestDto.getContent());
 	}
 	
+	@Transactional
+	public void 댓글삭제(int replyId) {
+				
+		replyRepository.deleteById(replyId);
+	}
 	
 }
 	/*@Transactional(readOnly = true) //select 시 트랜젝션 시작, 서비스 종료시 트랜잭션 종료(정합성 유지)
