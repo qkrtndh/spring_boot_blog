@@ -132,7 +132,9 @@ public class UserController {
 		System.out.println("블로그서버 패스워드 : " + cosKey);
 		User kakaouser = User.builder()
 				.username(kakaoprofile.getKakao_account().getEmail() + "_" + kakaoprofile.getId())
-				.password(cosKey).email(kakaoprofile.getKakao_account().getEmail()).oauth("kakao").build();
+				.password(cosKey).email(kakaoprofile.getKakao_account().getEmail()).oauth("kakao")
+				.nickname(kakaoprofile.getKakao_account().getEmail())
+				.build();
 		// 가입자 비 가입자 처리
 		User originuser = userService.회원찾기(kakaouser.getUsername());
 		if (originuser.getUsername() == null) {

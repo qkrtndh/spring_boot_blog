@@ -6,11 +6,11 @@
 	<form>
 		<input type="hidden" id="id" value="${principal.user.id }" />
 		<div class="form-group">
-			<label for="username">Username</label> <input type="text"
+			<label for="username">ID</label> <input type="text"
 				value="${principal.user.username }" class="form-control"
 				placeholder="Enter username" id="username" readonly="readonly">
 		</div>
-
+		
 		<div class="form-group">
 			<label for="email">Email</label> <input type="email"
 				value="${principal.user.email }" class="form-control"
@@ -22,7 +22,13 @@
 				<label for="password">Password</label> <input type="password"
 					class="form-control" placeholder="Enter password" id="password">
 			</div>
+			<div class="form-group">
+			<label for="nickname">Nickname</label> <input type="text"
+				value="${principal.user.nickname }" class="form-control"
+				placeholder="Enter nickname" id="nickname">
+		</div>
 		</c:if>
+		
 
 
 

@@ -13,6 +13,7 @@ import com.cos.blog.model.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	//select * from user where username=?
 		Optional<User> findByUsername(String username);
+		User findByNickname(String nickname);
 }
 //JPA naming 전략
 	//이하의 함수명은

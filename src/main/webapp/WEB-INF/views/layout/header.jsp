@@ -51,7 +51,7 @@
 				<c:otherwise>
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link"
-							href="/user/updateForm">${principal.user.username}</a></li>
+							href="/user/updateForm">어서오세요 ${principal.user.nickname}님</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a>
 						</li>
 					</ul>

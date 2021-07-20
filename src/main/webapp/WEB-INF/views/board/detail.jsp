@@ -11,7 +11,7 @@
 	</c:if>
 	<br /> <br />
 	<div>
-		글 번호: <span id="id"><i>${board.id} </i></span> 작성자: <span><i>${board.user.username}
+		글 번호: <span id="id"><i>${board.id} </i></span> 작성자: <span><i>${board.user.nickname}
 		</i></span>
 	</div>
 	<br />
@@ -44,7 +44,7 @@
 					class="list-group-item d-flex justify-content-between">
 					<div>${reply.content }</div>
 					<div class="d-flex">
-						<div class="font-italic">작성자: ${reply.user.username } &nbsp;</div>
+						<div class="font-italic">작성자: ${reply.user.nickname } &nbsp;</div>
 						<button onClick="index.replyDelete(${board.id},${reply.id },${reply.user.id },${principal.user.id})"
 							class=badge>삭제</button>
 					</div>

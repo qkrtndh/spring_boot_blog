@@ -98,7 +98,7 @@ let index = {
 				alert("댓글 삭제");
 				location.href = `/board/${boardId}`;
 			}
-			else{
+			else {
 				alert("작성자가 아닙니다.");
 			}
 

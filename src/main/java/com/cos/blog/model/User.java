@@ -43,6 +43,9 @@ public class User {
 	
 	private String oauth;//kakao,google
 	
+	@Column(nullable = false,length = 50,unique = true)//닉네임
+	private String nickname;
+	
 	//@ColumnDefault("'user'")//어노테이션증가를 막기위해 제외.
 	//private String role;//Enum을 쓰는게 좋다. 우선 임시로 String
 	@Enumerated(EnumType.STRING)//DB에는 RoleType이라는 Enum이 없으므로 적용해줌
