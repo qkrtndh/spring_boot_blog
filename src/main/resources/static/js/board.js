@@ -88,14 +88,20 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 	},
-	replyDelete: function(boardId, replyId) {
+	replyDelete: function(boardId, replyId, replyUserId, userId) {
 		$.ajax({
 			type: "DELETE",
 			url: `/api/board/${boardId}/reply/${replyId}`,
-			data:"json"
+			data: "json"
 		}).done(function(response) {
-			alert("댓글 삭제");
-			location.href = `/board/${boardId}`;
+			if (userId === replyUserId) {
+				alert("댓글 삭제");
+				location.href = `/board/${boardId}`;
+			}
+			else{
+				alert("작성자가 아닙니다.");
+			}
+
 
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
