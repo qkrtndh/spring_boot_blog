@@ -25,8 +25,8 @@
 	<hr />
 	<div class="card">
 		<form action="">
-			<input type="hidden" id="userId" value="${principal.user.id}" /> 
-			<input type="hidden" id="boardId" value="${board.id}" />
+			<input type="hidden" id="userId" value="${principal.user.id}" /> <input
+				type="hidden" id="boardId" value="${board.id}" />
 			<div class="card-body">
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>
@@ -45,7 +45,11 @@
 					<div>${reply.content }</div>
 					<div class="d-flex">
 						<div class="font-italic">작성자: ${reply.user.username } &nbsp;</div>
-						<button onClick="index.replyDelete(${board.id},${reply.id })" class=badge>삭제</button>
+						<c:if test="${reply.user.id == principal.user.id}">
+							<button onClick="index.replyDelete(${board.id},${reply.id })"
+								class=badge>삭제</button>
+						</c:if>
+
 					</div>
 				</li>
 			</c:forEach>
