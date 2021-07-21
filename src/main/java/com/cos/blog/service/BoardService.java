@@ -52,6 +52,14 @@ public class BoardService {
 	}
 	
 	@Transactional
+	public void 조회수증가(int id, int userId) {
+		Board board = boardRepository.findById(id).get();
+		if(board.getUser().getId() != userId) {
+			board.setCount(board.getCount()+1);
+		}
+	}
+	
+	@Transactional
 	public void 삭제하기(int id)
 	{
 		System.out.println("삭제하기:" + id);

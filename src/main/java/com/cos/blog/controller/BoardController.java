@@ -25,8 +25,9 @@ public class BoardController {
 		return "index";//viewResolver가 동작하면 model정보를 가지고 인덱스페이지로 이동 반환값 앞뒤로 prefix suffix 붙여줌
 	}
 	@GetMapping("/board/{id}")
-	public String findById(@PathVariable int id,Model model) {
+	public String findById(@PathVariable int id,Model model, @AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("board",boardService.글상세보기(id));
+		boardService.조회수증가(id,principal.getUser().getId());
 		return "board/detail";
 	}
 	
