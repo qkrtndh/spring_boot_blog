@@ -123,12 +123,21 @@ let index = {
 			contentType: "application/json; charset=utf-8"
 			//dataType:"json"//응답이 왔을 때 json 형식으로 온다면 javascript로 변환//자동 변환 되는듯
 		}).done(function(response) {
-			alert("댓글 수정 완료");
-			location.href = `/board/${boardId}`;
+			opener.parent.location.reload();
+			window.close();
 
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
+	},
+	showPop: function(replyId, replyuserid, principaluserid) {
+		if (replyuserid === principaluserid) {
+			let add = "/reply/" + replyId + "/updateForm";
+			window.open(add, "댓글수정", "width=400, height=130")
+		}
+		else {
+			alert("작성자가 아닙니다.");
+		}
 	}
 }
 

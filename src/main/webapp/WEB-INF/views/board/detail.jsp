@@ -45,9 +45,11 @@
 					<div>${reply.content }</div>
 					<div class="d-flex">
 						<div class="font-italic">작성자: ${reply.user.nickname } &nbsp;</div>
-						<c:if test="${reply.user.id == principal.user.id}">
-							<a href="/reply/${reply.id}/updateForm" class="badge" >수정</a>
-						</c:if>
+
+						<button
+							onClick="index.showPop(${reply.id},${reply.user.id },${principal.user.id })"
+							class=badge>수정</button>
+
 						<button
 							onClick="index.replyDelete(${board.id},${reply.id },${reply.user.id },${principal.user.id})"
 							class=badge>삭제</button>
