@@ -16,6 +16,7 @@ import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.Board;
 import com.cos.blog.model.Reply;
 import com.cos.blog.model.User;
+import com.cos.blog.repository.BoardRepository;
 import com.cos.blog.service.BoardService;
 import com.cos.blog.service.UserService;
 
@@ -54,8 +55,11 @@ public class BoradApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
-	public  ResponseDto<Integer> replyDelete(@PathVariable int replyId) {
-		
+	public  ResponseDto<Integer> replyDelete(@PathVariable int replyId, @AuthenticationPrincipal PrincipalDetail principal) {
+		if(principal.getUser().getId()!=boardService.댓글찾기(replyId).getUser().getId())
+		{
+			return new ResponseDto<Integer>(HttpStatus.BAD_REQUEST.value(),HttpStatus.BAD_REQUEST.value());
+		}
 		boardService.댓글삭제(replyId);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
