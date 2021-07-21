@@ -37,7 +37,7 @@
 	</div>
 	<br />
 	<div class="card">
-		<div class="card-header">댓글 리스트</div>
+		<div class="card-header">댓글 리스트(${ board.replys.size()})</div>
 		<ul id="reply-box" class="list-group">
 			<c:forEach var="reply" items="${board.replys}">
 				<li id="reply-${reply.id }"
@@ -45,7 +45,11 @@
 					<div>${reply.content }</div>
 					<div class="d-flex">
 						<div class="font-italic">작성자: ${reply.user.nickname } &nbsp;</div>
-						<button onClick="index.replyDelete(${board.id},${reply.id },${reply.user.id },${principal.user.id})"
+						<c:if test="${reply.user.id == principal.user.id}">
+							<a href="/reply/${reply.id}/updateForm" class="badge" >수정</a>
+						</c:if>
+						<button
+							onClick="index.replyDelete(${board.id},${reply.id },${reply.user.id },${principal.user.id})"
 							class=badge>삭제</button>
 					</div>
 				</li>

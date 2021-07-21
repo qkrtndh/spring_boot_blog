@@ -41,4 +41,10 @@ public class BoardController {
 		model.addAttribute("board",boardService.글상세보기(id));
 		return "board/updateForm";
 	}
+	
+	@GetMapping("/reply/{id}/updateForm")
+	public String replyUpdateForm(@PathVariable int id, Model model) {
+		model.addAttribute("reply",boardService.댓글찾기(id));
+		return "reply/updateForm";
+	}
 }

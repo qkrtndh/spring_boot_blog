@@ -54,7 +54,7 @@ public class BoardService {
 	@Transactional
 	public void 조회수증가(int id, int userId) {
 		Board board = boardRepository.findById(id).get();
-		if(board.getUser().getId() != userId) {
+		if(board.getUser().getId()!=userId) {
 			board.setCount(board.getCount()+1);
 		}
 	}
@@ -88,6 +88,24 @@ public class BoardService {
 	public void 댓글삭제(int replyId) {
 				
 		replyRepository.deleteById(replyId);
+	}
+
+	@Transactional
+	public Reply 댓글찾기(int id)
+	{
+		return replyRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("댓글을 찾을 수 없음");
+		});
+		
+	}
+	
+	@Transactional
+	public void 댓글수정(int id,Reply requestReply)
+	{
+		Reply reply = replyRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("찾을 수 없음");
+		});
+		reply.setContent(requestReply.getContent());
 	}
 	
 }

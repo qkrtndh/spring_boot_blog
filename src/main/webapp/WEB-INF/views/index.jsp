@@ -9,6 +9,7 @@
 				<h4 class="card-title">${board.title }</h4>
 				<p>작성: ${board.user.nickname}</p>
 				<p>조회수: ${board.count}</p>
+				<p>댓글수: ${board.replys.size() }</p>
 				<a href="/board/${board.id}" class="btn btn-primary">상세보기</a>
 			</div>
 		</div>

@@ -60,4 +60,10 @@ public class BoradApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
+	@PutMapping("/api/reply/{id}")
+	public  ResponseDto<Integer> update(@PathVariable int id,@RequestBody Reply reply) {
+		boardService.댓글수정(id,reply);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
 }

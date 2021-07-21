@@ -12,6 +12,9 @@ let index = {
 		$("#btn-reply-save").on("click", () => {
 			this.replySave();
 		});
+		$("#btn-replyUpdate").on("click", () => {
+			this.replyUpdate();
+		});
 	},
 
 	save: function() {
@@ -102,6 +105,26 @@ let index = {
 				alert("작성자가 아닙니다.");
 			}
 
+
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	},
+	replyUpdate: function() {
+		let id = $("#id").val()
+		let boardId = $("#boardId").val()
+		let data = {
+			content: $("#content").val()
+		};
+		$.ajax({
+			type: "PUT",
+			url: "/api/reply/" + id,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8"
+			//dataType:"json"//응답이 왔을 때 json 형식으로 온다면 javascript로 변환//자동 변환 되는듯
+		}).done(function(response) {
+			alert("댓글 수정 완료");
+			location.href = `/board/${boardId}`;
 
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
